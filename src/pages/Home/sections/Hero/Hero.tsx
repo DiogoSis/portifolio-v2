@@ -11,10 +11,17 @@ const Hero = () => {
         backgroundColor: theme.palette.primary.main,
         height: "100vh",
         display: "flex",
-        alignItems: "center"
+        alignItems: "center",
+        [theme.breakpoints.up('xs')]: { // <= mobile
+            paddingTop: "100px",
+
+        },
+        [theme.breakpoints.up('md')]: { // >=desktop
+            paddingTop: "0",
+        }
     }))
-    const StyleImg  = styled("img")(({theme}) => ({
-        width: "80%",
+    const StyledImg  = styled("img")(({theme}) => ({
+        width: "70%",
         borderRadius: "50%",
         border: `1px solid ${theme.palette.primary.contrastText}`
     }))
@@ -33,16 +40,16 @@ const Hero = () => {
                                 <AnimatedBackground />
                             </Box>
                             <Box position="relative" textAlign="center">
-                                <StyleImg src={Avatar} />
+                                <StyledImg src={Avatar} />
                             </Box>
                         </Box>
                     </Grid>
                     <Grid item xs={12} md={7}>
                         <Typography color="primary.contrastText" variant="h1" textAlign="center" pb={2}>Diogo Luna</Typography>
-                        <Typography color="primary.contrastText" variant="h2" textAlign="center">Analista de Desenvolvimento de Sistemas</Typography>
+                        <Typography color="primary.contrastText" variant="h2" textAlign="center">Desenvolvimento de Sistemas</Typography>
                         <Grid container spacing={3} pt={3} display="flex" justifyContent="center">
                             <Grid item xs={12} md={4} display="flex" justifyContent="center">
-                                <StyledButton>
+                                <StyledButton onClick={() => console.log("CV")}>
                                     <DownloadIcon/>
                                     <Typography>
                                         Download CV
@@ -50,7 +57,7 @@ const Hero = () => {
                                 </StyledButton>
                             </Grid>
                             <Grid item xs={12} md={4} display="flex" justifyContent="center">
-                                <StyledButton>
+                                <StyledButton onClick={() => console.log("Contato")}>
                                     <EmailIcon />
                                     <Typography>
                                         Contato
